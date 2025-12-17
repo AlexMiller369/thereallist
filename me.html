@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Position</title>
+  <script>
+    window.onload = function () {
+      let id = localStorage.getItem("trl_id") || "TRL-00000";
+      document.getElementById("userId").innerText = id;
+      document.getElementById("position").innerText =
+        "#" + id.split("-")[1];
+    };
+  </script>
+</head>
+<body>
+
+  <h1>You are on The Real List</h1>
+  
+
+  <p>
+    Your ID:<br>
+    
+  </p>
+  <h2 id="userId"></h2>
+
+  <p>
+    Your position:<br>
+    
+  </p>
+  <h2 id="position"></h2>
+
+  <hr>
+
+  <p>
+    Invite others to move up.<br>
+    
+  </p>
+
+  <p>
+    Anyone who joins after you can push you down.<br>
+    
+  </p>
+
+</body>
+</html>

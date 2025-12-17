@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join The Real List</title>
+  <script>
+    function generateId() {
+      let id = "TRL-" + Math.floor(10000 + Math.random() * 90000);
+      localStorage.setItem("trl_id", id);
+      document.getElementById("userId").innerText = id;
+    }
+    window.onload = generateId;
+  </script>
+</head>
+<body>
+
+  <h1>Join The Real List</h1>
+  
+
+  <p>
+    Your ID:<br>
+    
+  </p>
+  <h2 id="userId"></h2>
+
+  <hr>
+
+  <p>
+    Entry: 2 TON or 2 USDT (TRC-20)<br>
+    
+  </p>
+
+  <p>
+    <strong>TON address:</strong><br>
+    UQXXXXXXXXXXXXXXX
+  </p>
+
+  <p>
+    <strong>USDT (TRC-20) address:</strong><br>
+    TXXXXXXXXXXXXXXX
+  </p>
+
+  <p>
+    Include your ID in the comment if possible.<br>
+    
+  </p>
+
+  <p>
+    If your wallet doesn’t support comments — it’s OK.<br>
+    
+  </p>
+
+  <a href="me.html">
+    <button>I’ve sent it</button>
+  </a>
+
+</body>
+</html>

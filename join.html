@@ -14,39 +14,22 @@
     }
 
     body {
-      background: radial-gradient(1200px 600px at 20% -10%, #1f2bff22, transparent 40%),
-                  radial-gradient(800px 400px at 80% 0%, #00ffd522, transparent 35%),
-                  #0b0b0f;
+      background: #0b0b0f;
       color: #ffffff;
-      line-height: 1.5;
     }
 
     .container {
       max-width: 720px;
       margin: 0 auto;
-      padding: 80px 24px 120px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin-bottom: 28px;
-      backdrop-filter: blur(6px);
+      padding: 80px 24px;
     }
 
     h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      font-size: 42px;
+      margin-bottom: 16px;
     }
 
     .subtitle {
-      font-size: 18px;
       color: #b8b8c6;
       margin-bottom: 40px;
     }
@@ -54,137 +37,133 @@
     .card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 18px;
-      padding: 32px;
-      margin-bottom: 40px;
-    }
-
-    label {
-      font-size: 14px;
-      color: #9a9aaa;
-      display: block;
-      margin-bottom: 8px;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
     }
 
     input {
       width: 100%;
-      padding: 14px 16px;
-      border-radius: 12px;
+      padding: 14px;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.05);
-      color: #ffffff;
+      color: white;
       font-size: 16px;
-      margin-bottom: 20px;
     }
 
-    input::placeholder {
-      color: #7f7f8c;
+    button {
+      margin-top: 16px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
-    .small {
-      font-size: 13px;
-      color: #8d8d99;
-      margin-top: 6px;
+    .primary {
+      background: white;
+      color: black;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .error {
+      color: #ff6b6b;
+    }
+
+    .success {
+      color: #4cd964;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .address {
       font-family: monospace;
-      font-size: 15px;
       background: rgba(0,0,0,0.4);
-      padding: 14px;
-      border-radius: 12px;
-      margin: 16px 0;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 12px;
       word-break: break-all;
     }
-
-    .cta {
-      display: inline-block;
-      background: linear-gradient(135deg, #ffffff, #eaeaea);
-      color: #000000;
-      padding: 18px 36px;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 14px;
-      text-decoration: none;
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .note {
-      font-size: 14px;
-      color: #9a9aaa;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 36px;
-      }
-    }
   </style>
-
-  <script>
-    function generateId() {
-      let id = "TRL-" + Math.floor(10000 + Math.random() * 90000);
-      localStorage.setItem("trl_id", id);
-      document.getElementById("userId").innerText = id;
-    }
-    window.onload = generateId;
-  </script>
-
 </head>
 
 <body>
   <div class="container">
 
-    <div class="badge">Early access</div>
-
     <h1>Join The Real List</h1>
-
     <p class="subtitle">
-      Choose a public name and enter the list.
-      Your position depends on who you invite.
+      Choose a public nickname. Availability is checked before payment.
     </p>
 
+    <!-- STEP 1: NICKNAME -->
     <div class="card">
-      <label>Your public nickname</label>
-      <input type="text" placeholder="e.g. alex, anon_77, realmark" />
-
-      <div class="small">
-        This name will be public and cannot be changed later.
-      </div>
+      <label>Public nickname</label>
+      <input id="nickname" placeholder="e.g. alex, anon77" />
+      <button class="primary" onclick="checkNickname()">Check availability</button>
+      <div id="status" class="status"></div>
     </div>
 
-    <div class="card">
-      <p>
-        <strong>Entry:</strong> 2 USDT (TRC-20)
-      </p>
+    <!-- STEP 2: PAYMENT -->
+    <div id="payment" class="card hidden">
+      <p><strong>Entry:</strong> 2 USDT (TRC-20)</p>
 
       <div class="address">
-        TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        TXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       </div>
 
-      <div class="small">
+      <p class="status">
         Send exactly 2 USDT via TRC-20 network.
-      </div>
+      </p>
 
-      <div class="note">
-        If your wallet supports comments, include your ID.
-      </div>
-
-      <div class="note">
-        Your ID: <strong id="userId"></strong>
-      </div>
-    </div>
-
-    <a href="me.html" class="cta">
-      I’ve sent it
-    </a>
-
-    <div class="note">
-      Price will increase after early access.
+      <a href="me.html">
+        <button class="primary">I’ve sent it</button>
+      </a>
     </div>
 
   </div>
+
+  <script>
+    const API_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+    async function checkNickname() {
+      const nick = document.getElementById("nickname").value.trim().toLowerCase();
+      const status = document.getElementById("status");
+      const payment = document.getElementById("payment");
+
+      payment.classList.add("hidden");
+
+      if (!nick) {
+        status.innerHTML = "<span class='error'>Enter a nickname.</span>";
+        return;
+      }
+
+      status.innerHTML = "Checking...";
+
+      try {
+        const res = await fetch(`${API_URL}?nickname=${encodeURIComponent(nick)}`);
+        const data = await res.json();
+
+        if (data.status === "taken") {
+          status.innerHTML = "<span class='error'>This nickname is already taken.</span>";
+        } else if (data.status === "available") {
+          status.innerHTML = "<span class='success'>Nickname is available and reserved for 30 minutes.</span>";
+          payment.classList.remove("hidden");
+        } else {
+          status.innerHTML = "<span class='error'>Unexpected response.</span>";
+        }
+      } catch (e) {
+        status.innerHTML = "<span class='error'>Connection error.</span>";
+      }
+    }
+  </script>
+
 </body>
 </html>
